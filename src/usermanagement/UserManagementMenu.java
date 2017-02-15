@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author NgocPLH
  */
-public class UserManagement {
+public class UserManagementMenu {
 
     /**
      * @param args the command line arguments
