@@ -55,7 +55,6 @@ public class UserManagementMenu {
                     break;
                 case 4:
                     UserController.processDelete();
-                    
                     break;
                 case 5:
                     UserController.processSearch();
@@ -74,6 +73,5 @@ public class UserManagementMenu {
         }
 
     }
-
 
 }

@@ -15,11 +15,13 @@ public class UserController {
 
     public static void processInsert() throws SQLException {
         System.out.println("Thực hiện thêm mới sinh viên.");
-        System.out.println("Nhập tên sinh viên.");
-        String name = ScannerUtil.getString();
+
         System.out.println("Nhập id sinh viên.");
         String id = ScannerUtil.getString();
-        
+
+        System.out.println("Nhập tên sinh viên.");
+        String name = ScannerUtil.getString();
+
         User user = new User();
         user.setStudent_id(id);
         user.setStuden_name(name);
@@ -35,10 +37,11 @@ public class UserController {
 
     public static void processUpdate() throws SQLException {
         System.out.println("Sửa thông tin sinh viên.");
-        System.out.println("Nhập id sinh viên.");
-        String id = ScannerUtil.getString();
+        System.out.println("Nhập tên sin viên muốn sửa");
         String name = ScannerUtil.getString();
-        
+        System.out.println("Nhập ID sin viên muốn sửa");
+        String id = ScannerUtil.getString();
+
         User user = new User();
         user.setStudent_id(id);
         user.setStuden_name(name);

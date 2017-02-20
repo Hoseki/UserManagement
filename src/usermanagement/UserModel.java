@@ -5,7 +5,6 @@
  */
 package usermanagement;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +25,7 @@ public class UserModel {
 
             Statement statement = DatabaseAccessObject.connectDB().createStatement();
             statement.execute(sql);
+            System.out.println("Insert thành công!");
 
         } catch (SQLException e) {
             System.err.println("Insert error. That is " + e + ".");
@@ -53,10 +53,11 @@ public class UserModel {
         try {
 
             String sql;
-            sql = "UPDATE students" + "SET student_name = '" + user.getStuden_name()+ "' " +"WHERE student_id =" + user.getStudent_id();
+            sql = "UPDATE students SET student_name = '" + user.getStuden_name() + "' WHERE student_id ='" + user.getStudent_id() + "';";
 
             Statement statement = DatabaseAccessObject.connectDB().createStatement();
             statement.execute(sql);
+            System.out.println("Update thành công!");
 
         } catch (SQLException e) {
             System.err.println("Update error. That is " + e + ".");
@@ -69,30 +70,37 @@ public class UserModel {
         try {
 
             String sql;
-            sql = "DELETE FROM students WHERE student_id = " + user.getStudent_id();
+            sql = "DELETE FROM students WHERE student_id = '" + user.getStudent_id() + "';";
 
             Statement statement = DatabaseAccessObject.connectDB().createStatement();
             statement.execute(sql);
             System.out.println("Xóa thành công!");
-            
+
         } catch (SQLException e) {
-            System.err.println("Update error. That is " + e + ".");
+            System.err.println("Delete error. That is " + e + ".");
         }
 
     }
-    
-        public static void search(User user) {
+
+    public static void search(User user) {
 
         try {
 
-            String sql;
-            sql = "SELECT * FROM students WHERE student_id = " + user.getStudent_id();
+            String sql = "SELECT * FROM students WHERE student_id = '" + user.getStudent_id() + "';";
 
             Statement statement = DatabaseAccessObject.connectDB().createStatement();
-            statement.executeQuery(sql);
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if (rs.next()) {
 
+                System.out.println("MSV: " + rs.getString("student_id"));
+                System.out.println("Tên Sinh Viên: " + rs.getString("student_name"));
+
+            } else {
+                System.err.println("Không tồn tại mã sinh viên vừa nhập.");
+            }
         } catch (SQLException e) {
-            System.err.println("Update error. That is " + e + ".");
+            System.err.println("Search error. That is " + e + ".");
         }
 
     }
