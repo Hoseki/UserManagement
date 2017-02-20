@@ -88,7 +88,8 @@ public class UserModel {
 
             String sql = "SELECT * FROM students WHERE student_id = '" + user.getStudent_id() + "';";
 
-            Statement statement = DatabaseAccessObject.connectDB().createStatement();
+            Statement statement;
+            statement = DatabaseAccessObject.connectDB().createStatement();
             ResultSet rs = statement.executeQuery(sql);
             
             if (rs.next()) {
